@@ -103,6 +103,9 @@
       <DependentUpon>ModelProcesamientoColas.edmx</DependentUpon>
       <LastGenOutput>ModelProcesamientoColas.cs</LastGenOutput>
     </Content>
+    <Content Include="StoreProcedure\SP_GET_PROCESAMIENTO.sql" />
+    <Content Include="StoreProcedure\SP_INSERT_PROCESAMIENTO_COLA.sql" />
+    <Content Include="StoreProcedure\SP_UPDATE_PROCESAMIENTO_COLA.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
