@@ -1,0 +1,13 @@
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasNegocio\obj\Debug\ProcesamientoColasNegocio.csprojAssemblyReference.cache
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasNegocio\obj\Debug\ProcesamientoColasNegocio.csproj.CoreCompileInputs.cache
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasNegocio\bin\Debug\ProcesamientoColasNegocio.dll.config
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasNegocio\bin\Debug\ProcesamientoColasNegocio.dll
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasNegocio\bin\Debug\ProcesamientoColasNegocio.pdb
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasNegocio\bin\Debug\EntityFramework.dll
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasNegocio\bin\Debug\ProcesamientoColasDB.dll
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasNegocio\bin\Debug\EntityFramework.xml
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasNegocio\bin\Debug\ProcesamientoColasDB.pdb
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasNegocio\bin\Debug\ProcesamientoColasDB.dll.config
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasNegocio\obj\Debug\ProcesamientoColasNegocio.csproj.CopyComplete
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasNegocio\obj\Debug\ProcesamientoColasNegocio.dll
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasNegocio\obj\Debug\ProcesamientoColasNegocio.pdb

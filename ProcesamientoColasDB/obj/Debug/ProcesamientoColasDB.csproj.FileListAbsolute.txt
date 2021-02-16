@@ -1,0 +1,12 @@
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasDB\bin\Debug\ProcesamientoColasDB.dll.config
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasDB\bin\Debug\ProcesamientoColasDB.dll
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasDB\bin\Debug\ProcesamientoColasDB.pdb
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasDB\bin\Debug\EntityFramework.dll
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasDB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasDB\bin\Debug\EntityFramework.xml
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasDB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasDB\obj\Debug\ProcesamientoColasDB.csproj.CoreCompileInputs.cache
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasDB\obj\Debug\ProcesamientoColasDB.csproj.CopyComplete
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasDB\obj\Debug\ProcesamientoColasDB.dll
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasDB\obj\Debug\ProcesamientoColasDB.pdb
+C:\Users\Gaby\source\repos\SisProcesamientoColas\ProcesamientoColasDB\obj\Debug\ProcesamientoColasDB.csprojAssemblyReference.cache

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SistemeColasModelStoreContainer" CdmEntityContainer="SistemeColasEntities">
+    <EntitySetMapping Name="COLAS">
+      <EntityTypeMapping TypeName="SistemeColasModel.COLAS">
+        <MappingFragment StoreEntitySet="COLAS">
+          <ScalarProperty Name="COLA_ID" ColumnName="COLA_ID" />
+          <ScalarProperty Name="COLA_NAME" ColumnName="COLA_NAME" />
+          <ScalarProperty Name="COLA_DESCRIPTION" ColumnName="COLA_DESCRIPTION" />
+          <ScalarProperty Name="COLA_TIEMPO" ColumnName="COLA_TIEMPO" />
+          <ScalarProperty Name="COLA_ESTADO" ColumnName="COLA_ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROCESAMIENTO_COLA">
+      <EntityTypeMapping TypeName="SistemeColasModel.PROCESAMIENTO_COLA">
+        <MappingFragment StoreEntitySet="PROCESAMIENTO_COLA">
+          <ScalarProperty Name="PROC_ID" ColumnName="PROC_ID" />
+          <ScalarProperty Name="PROC_ID_CLIENT" ColumnName="PROC_ID_CLIENT" />
+          <ScalarProperty Name="PROC_NAME_CLIENT" ColumnName="PROC_NAME_CLIENT" />
+          <ScalarProperty Name="PROC_COLA_ID" ColumnName="PROC_COLA_ID" />
+          <ScalarProperty Name="PROC_START_TIME" ColumnName="PROC_START_TIME" />
+          <ScalarProperty Name="PROC_END_TIME" ColumnName="PROC_END_TIME" />
+          <ScalarProperty Name="PROC_DESCRIPTION" ColumnName="PROC_DESCRIPTION" />
+          <ScalarProperty Name="PROC_ESTADO" ColumnName="PROC_ESTADO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_GET_PROCESAMIENTO" FunctionName="SistemeColasModel.Store.SP_GET_PROCESAMIENTO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SistemeColasModel.SP_GET_PROCESAMIENTO_Result">
+          <ScalarProperty Name="PROC_ID" ColumnName="PROC_ID" />
+          <ScalarProperty Name="PROC_ID_CLIENT" ColumnName="PROC_ID_CLIENT" />
+          <ScalarProperty Name="PROC_NAME_CLIENT" ColumnName="PROC_NAME_CLIENT" />
+          <ScalarProperty Name="PROC_COLA_ID" ColumnName="PROC_COLA_ID" />
+          <ScalarProperty Name="PROC_START_TIME" ColumnName="PROC_START_TIME" />
+          <ScalarProperty Name="PROC_END_TIME" ColumnName="PROC_END_TIME" />
+          <ScalarProperty Name="PROC_DESCRIPTION" ColumnName="PROC_DESCRIPTION" />
+          <ScalarProperty Name="PROC_ESTADO" ColumnName="PROC_ESTADO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_INSERT_PROCESAMIENTO_COLA" FunctionName="SistemeColasModel.Store.SP_INSERT_PROCESAMIENTO_COLA" />
+    <FunctionImportMapping FunctionImportName="SP_UPDATE_PROCESAMIENTO_COLA" FunctionName="SistemeColasModel.Store.SP_UPDATE_PROCESAMIENTO_COLA" />
+  </EntityContainerMapping>
+</Mapping>

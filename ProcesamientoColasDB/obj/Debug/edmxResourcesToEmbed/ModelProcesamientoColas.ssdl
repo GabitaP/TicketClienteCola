@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SistemeColasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="COLAS">
+    <Key>
+      <PropertyRef Name="COLA_ID" />
+    </Key>
+    <Property Name="COLA_ID" Type="int" Nullable="false" />
+    <Property Name="COLA_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="COLA_DESCRIPTION" Type="varchar" MaxLength="300" />
+    <Property Name="COLA_TIEMPO" Type="int" Nullable="false" />
+    <Property Name="COLA_ESTADO" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PROCESAMIENTO_COLA">
+    <Key>
+      <PropertyRef Name="PROC_ID" />
+    </Key>
+    <Property Name="PROC_ID" Type="int" Nullable="false" />
+    <Property Name="PROC_ID_CLIENT" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PROC_NAME_CLIENT" Type="varchar" MaxLength="100" />
+    <Property Name="PROC_COLA_ID" Type="int" Nullable="false" />
+    <Property Name="PROC_START_TIME" Type="datetime" Nullable="false" />
+    <Property Name="PROC_END_TIME" Type="datetime" Nullable="false" />
+    <Property Name="PROC_DESCRIPTION" Type="varchar" MaxLength="300" />
+    <Property Name="PROC_ESTADO" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_PROC_COLA_ID">
+    <End Role="COLAS" Type="Self.COLAS" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PROCESAMIENTO_COLA" Type="Self.PROCESAMIENTO_COLA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COLAS">
+        <PropertyRef Name="COLA_ID" />
+      </Principal>
+      <Dependent Role="PROCESAMIENTO_COLA">
+        <PropertyRef Name="PROC_COLA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SP_GET_PROCESAMIENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="COLA" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_INSERT_PROCESAMIENTO_COLA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_CLI" Type="varchar" Mode="In" />
+    <Parameter Name="NAME_CLI" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_UPDATE_PROCESAMIENTO_COLA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="COLA" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="SistemeColasModelStoreContainer">
+    <EntitySet Name="COLAS" EntityType="Self.COLAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROCESAMIENTO_COLA" EntityType="Self.PROCESAMIENTO_COLA" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_PROC_COLA_ID" Association="Self.FK_PROC_COLA_ID">
+      <End Role="COLAS" EntitySet="COLAS" />
+      <End Role="PROCESAMIENTO_COLA" EntitySet="PROCESAMIENTO_COLA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

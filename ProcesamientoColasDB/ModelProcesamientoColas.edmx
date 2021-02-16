@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SistemeColasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="COLAS">
+          <Key>
+            <PropertyRef Name="COLA_ID" />
+          </Key>
+          <Property Name="COLA_ID" Type="int" Nullable="false" />
+          <Property Name="COLA_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="COLA_DESCRIPTION" Type="varchar" MaxLength="300" />
+          <Property Name="COLA_TIEMPO" Type="int" Nullable="false" />
+          <Property Name="COLA_ESTADO" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROCESAMIENTO_COLA">
+          <Key>
+            <PropertyRef Name="PROC_ID" />
+          </Key>
+          <Property Name="PROC_ID" Type="int" Nullable="false" />
+          <Property Name="PROC_ID_CLIENT" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PROC_NAME_CLIENT" Type="varchar" MaxLength="100" />
+          <Property Name="PROC_COLA_ID" Type="int" Nullable="false" />
+          <Property Name="PROC_START_TIME" Type="datetime" Nullable="false" />
+          <Property Name="PROC_END_TIME" Type="datetime" Nullable="false" />
+          <Property Name="PROC_DESCRIPTION" Type="varchar" MaxLength="300" />
+          <Property Name="PROC_ESTADO" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_PROC_COLA_ID">
+          <End Role="COLAS" Type="Self.COLAS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROCESAMIENTO_COLA" Type="Self.PROCESAMIENTO_COLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COLAS">
+              <PropertyRef Name="COLA_ID" />
+            </Principal>
+            <Dependent Role="PROCESAMIENTO_COLA">
+              <PropertyRef Name="PROC_COLA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_GET_PROCESAMIENTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="COLA" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_INSERT_PROCESAMIENTO_COLA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID_CLI" Type="varchar" Mode="In" />
+          <Parameter Name="NAME_CLI" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_UPDATE_PROCESAMIENTO_COLA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="COLA" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SistemeColasModelStoreContainer">
+          <EntitySet Name="COLAS" EntityType="Self.COLAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROCESAMIENTO_COLA" EntityType="Self.PROCESAMIENTO_COLA" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_PROC_COLA_ID" Association="Self.FK_PROC_COLA_ID">
+            <End Role="COLAS" EntitySet="COLAS" />
+            <End Role="PROCESAMIENTO_COLA" EntitySet="PROCESAMIENTO_COLA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SistemeColasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="COLAS">
+          <Key>
+            <PropertyRef Name="COLA_ID" />
+          </Key>
+          <Property Name="COLA_ID" Type="Int32" Nullable="false" />
+          <Property Name="COLA_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COLA_DESCRIPTION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="COLA_TIEMPO" Type="Int32" Nullable="false" />
+          <Property Name="COLA_ESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PROCESAMIENTO_COLA" Relationship="Self.FK_PROC_COLA_ID" FromRole="COLAS" ToRole="PROCESAMIENTO_COLA" />
+        </EntityType>
+        <EntityType Name="PROCESAMIENTO_COLA">
+          <Key>
+            <PropertyRef Name="PROC_ID" />
+          </Key>
+          <Property Name="PROC_ID" Type="Int32" Nullable="false" />
+          <Property Name="PROC_ID_CLIENT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PROC_NAME_CLIENT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PROC_COLA_ID" Type="Int32" Nullable="false" />
+          <Property Name="PROC_START_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PROC_END_TIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PROC_DESCRIPTION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="PROC_ESTADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="COLAS" Relationship="Self.FK_PROC_COLA_ID" FromRole="PROCESAMIENTO_COLA" ToRole="COLAS" />
+        </EntityType>
+        <Association Name="FK_PROC_COLA_ID">
+          <End Role="COLAS" Type="Self.COLAS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROCESAMIENTO_COLA" Type="Self.PROCESAMIENTO_COLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COLAS">
+              <PropertyRef Name="COLA_ID" />
+            </Principal>
+            <Dependent Role="PROCESAMIENTO_COLA">
+              <PropertyRef Name="PROC_COLA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SistemeColasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="COLAS" EntityType="Self.COLAS" />
+          <EntitySet Name="PROCESAMIENTO_COLA" EntityType="Self.PROCESAMIENTO_COLA" />
+          <AssociationSet Name="FK_PROC_COLA_ID" Association="Self.FK_PROC_COLA_ID">
+            <End Role="COLAS" EntitySet="COLAS" />
+            <End Role="PROCESAMIENTO_COLA" EntitySet="PROCESAMIENTO_COLA" />
+          </AssociationSet>
+          <FunctionImport Name="SP_GET_PROCESAMIENTO" ReturnType="Collection(SistemeColasModel.SP_GET_PROCESAMIENTO_Result)">
+            <Parameter Name="COLA" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERT_PROCESAMIENTO_COLA">
+            <Parameter Name="ID_CLI" Mode="In" Type="String" />
+            <Parameter Name="NAME_CLI" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UPDATE_PROCESAMIENTO_COLA">
+            <Parameter Name="COLA" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP_GET_PROCESAMIENTO_Result">
+          <Property Type="Int32" Name="PROC_ID" Nullable="false" />
+          <Property Type="String" Name="PROC_ID_CLIENT" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PROC_NAME_CLIENT" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="PROC_COLA_ID" Nullable="false" />
+          <Property Type="DateTime" Name="PROC_START_TIME" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="PROC_END_TIME" Nullable="false" Precision="23" />
+          <Property Type="String" Name="PROC_DESCRIPTION" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="PROC_ESTADO" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SistemeColasModelStoreContainer" CdmEntityContainer="SistemeColasEntities">
+          <EntitySetMapping Name="COLAS">
+            <EntityTypeMapping TypeName="SistemeColasModel.COLAS">
+              <MappingFragment StoreEntitySet="COLAS">
+                <ScalarProperty Name="COLA_ID" ColumnName="COLA_ID" />
+                <ScalarProperty Name="COLA_NAME" ColumnName="COLA_NAME" />
+                <ScalarProperty Name="COLA_DESCRIPTION" ColumnName="COLA_DESCRIPTION" />
+                <ScalarProperty Name="COLA_TIEMPO" ColumnName="COLA_TIEMPO" />
+                <ScalarProperty Name="COLA_ESTADO" ColumnName="COLA_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROCESAMIENTO_COLA">
+            <EntityTypeMapping TypeName="SistemeColasModel.PROCESAMIENTO_COLA">
+              <MappingFragment StoreEntitySet="PROCESAMIENTO_COLA">
+                <ScalarProperty Name="PROC_ID" ColumnName="PROC_ID" />
+                <ScalarProperty Name="PROC_ID_CLIENT" ColumnName="PROC_ID_CLIENT" />
+                <ScalarProperty Name="PROC_NAME_CLIENT" ColumnName="PROC_NAME_CLIENT" />
+                <ScalarProperty Name="PROC_COLA_ID" ColumnName="PROC_COLA_ID" />
+                <ScalarProperty Name="PROC_START_TIME" ColumnName="PROC_START_TIME" />
+                <ScalarProperty Name="PROC_END_TIME" ColumnName="PROC_END_TIME" />
+                <ScalarProperty Name="PROC_DESCRIPTION" ColumnName="PROC_DESCRIPTION" />
+                <ScalarProperty Name="PROC_ESTADO" ColumnName="PROC_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_GET_PROCESAMIENTO" FunctionName="SistemeColasModel.Store.SP_GET_PROCESAMIENTO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SistemeColasModel.SP_GET_PROCESAMIENTO_Result">
+                <ScalarProperty Name="PROC_ID" ColumnName="PROC_ID" />
+                <ScalarProperty Name="PROC_ID_CLIENT" ColumnName="PROC_ID_CLIENT" />
+                <ScalarProperty Name="PROC_NAME_CLIENT" ColumnName="PROC_NAME_CLIENT" />
+                <ScalarProperty Name="PROC_COLA_ID" ColumnName="PROC_COLA_ID" />
+                <ScalarProperty Name="PROC_START_TIME" ColumnName="PROC_START_TIME" />
+                <ScalarProperty Name="PROC_END_TIME" ColumnName="PROC_END_TIME" />
+                <ScalarProperty Name="PROC_DESCRIPTION" ColumnName="PROC_DESCRIPTION" />
+                <ScalarProperty Name="PROC_ESTADO" ColumnName="PROC_ESTADO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_INSERT_PROCESAMIENTO_COLA" FunctionName="SistemeColasModel.Store.SP_INSERT_PROCESAMIENTO_COLA" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATE_PROCESAMIENTO_COLA" FunctionName="SistemeColasModel.Store.SP_UPDATE_PROCESAMIENTO_COLA" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
